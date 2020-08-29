@@ -40,7 +40,7 @@ const inventory = [
     "product": "Civic",
     "type": "Vehicle",
     "manufacturer": "Honda",
-    "name": "Honda Civic touring",
+    "name": "Touring",
     "color": "Black",
     "details": "6.5-inch (diagonal) all-screen OLED Multi‑Touch display, Super Retina XDR display, HDR display, 2688-by-1242-pixel resolution at 458 ppi",
     "purchase_date": "2019-08-21",
@@ -58,14 +58,14 @@ const inventory = [
     "purchase_date": "2019-08-21",
     "location": {"id": "1598692204147", "name": "Toronto"},
     "status": "Available",
-    "id": "dUze4lyo9s397kidAZ3SHu"
+    "id": "dUze4lyo9s397kudAZ3SHu"
   }
 ]
 
 // const assignInventory = [
 //   {
 //     "userId": "dUze4lyo9s397kioAZ3SHn",
-//     "inventoryId": "dUze4lyo9s397kidAZ3SHu",
+//     "inventoryId": "dUze4lyo9h397kidAZ3SHu",
 //     "status": "recieved",
 //     "from_user": "",
 //     "dateAssigned": "2017-08-21",
