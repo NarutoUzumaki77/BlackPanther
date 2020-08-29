@@ -1,43 +1,82 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+// import { NavLink, Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-light"
-      style={{ backgroundColor: "#e3f2fd" }}
-    >
-      <Link className="navbar-brand" to="/">
-        Vidly
-      </Link>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <a className="navbar-brand" href="#">
+        Navbar
+      </a>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <NavLink className="nav-item nav-link" to="/movies">
-              Movies
-            </NavLink>
+          <li className="nav-item active">
+            <a className="nav-link" href="#">
+              Home <span className="sr-only">(current)</span>
+            </a>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-item nav-link" to="/customers">
-              Customers
-            </NavLink>
+            <a className="nav-link" href="#">
+              Link
+            </a>
+          </li>
+          <li className="nav-item dropdown">
+            <a
+              className="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Dropdown
+            </a>
+            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a className="dropdown-item" href="#">
+                Action
+              </a>
+              <a className="dropdown-item" href="#">
+                Another action
+              </a>
+              <div className="dropdown-divider"></div>
+              <a className="dropdown-item" href="#">
+                Something else here
+              </a>
+            </div>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-item nav-link" to="/rentals">
-              Rentals
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-item nav-link" to="/login">
-              Login
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-item nav-link" to="/register">
-              Register
-            </NavLink>
+            <a
+              className="nav-link disabled"
+              href="#"
+              tabIndex="-1"
+              aria-disabled="true"
+            >
+              Disabled
+            </a>
           </li>
         </ul>
+        <button
+          style={{ marginRight: "5px" }}
+          className="btn btn-secondary my-2 my-sm-0"
+          type="submit"
+        >
+          Register
+        </button>
+        <button className="btn btn-secondary my-2 my-sm-0" type="submit">
+          Log In
+        </button>
       </div>
     </nav>
   );
