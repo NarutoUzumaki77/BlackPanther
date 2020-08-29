@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Device from "./device";
 import { getAllInventoryItems } from "../../services/fakeInventory";
 
 class Devices extends Component {
@@ -29,24 +30,12 @@ class Devices extends Component {
               <th scope="col">Location</th>
               <th scope="col">Manufacturer</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {devices.map((d) => (
-              <tr>
-                <th>{d.name}</th>
-                <td>{d.status}</td>
-                <td>{d.product}</td>
-                <td>{d.type}</td>
-                <td>{d.color}</td>
-                <td>{d.location.name}</td>
-                <td>{d.manufacturer}</td>
-                <td>
-                  <button type="button" class="btn btn-danger">
-                    Delete
-                  </button>
-                </td>
-              </tr>
+              <Device device={d}/>
             ))}
           </tbody>
         </table>
