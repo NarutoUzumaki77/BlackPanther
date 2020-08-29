@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Device from "./device";
-import TableHeader from "../common/tableHeader";
 import Pagination from "../common/pagination";
+import DeviceTable from "./deviceTable";
 import { paginate } from "../../utils/paginate";
 import { getAllInventoryItems } from "../../services/fakeInventory";
 import _ from "lodash";
@@ -23,7 +22,6 @@ class Devices extends Component {
   }
 
   handleSort = (sortColumn) => {
-    console.log(sortColumn);
     this.setState({ sortColumn });
   };
 
@@ -55,18 +53,12 @@ class Devices extends Component {
     return (
       <div className="container">
         <h2>Devices</h2>
-        <table className="table">
-          <TableHeader
-            columns={columns}
-            onSort={this.handleSort}
-            sortColumn={sortColumn}
-          />
-          <tbody>
-            {sorted_devices.map((device) => (
-              <Device device={device} key={device.id} />
-            ))}
-          </tbody>
-        </table>
+        <DeviceTable
+          columns={columns}
+          onSort={this.handleSort}
+          sortColumn={sortColumn}
+          devices={sorted_devices}
+        />
         <Pagination
           itemsCount={devices.length}
           pageSize={this.state.pageSize}

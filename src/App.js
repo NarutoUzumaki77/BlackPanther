@@ -1,7 +1,8 @@
 import React from "react";
 import NavBar from "./components/common/navbar";
-import Devices from './components/devices/devices';
-// import { Route, Switch, Redirect } from "react-router-dom";
+import Devices from "./components/devices/devices";
+import DeviceDetails from "./components/devices/deviceDetail";
+import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -9,7 +10,13 @@ function App() {
     <div>
       <NavBar />
       <main role="main" className="container">
-        <Devices />
+        <Switch>
+          <Route path="/devices/:id" component={DeviceDetails} />
+          <Route path="/devices" component={Devices} />
+          <Route exact path="/">
+            <Redirect to="devices" />
+          </Route>
+        </Switch>
       </main>
     </div>
   );

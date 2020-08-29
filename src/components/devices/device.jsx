@@ -1,10 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Device = (props) => {
   const { device } = props;
   return (
     <tr>
-      <th>{device.name}</th>
+      <td>
+        <Link to={`/devices/${device.id}`}>{device.name}</Link>
+      </td>
       <td>{device.status}</td>
       <td>{device.product}</td>
       <td>{device.type}</td>
