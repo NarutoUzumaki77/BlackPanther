@@ -6,7 +6,7 @@ class DeviceTable extends Component {
         this.state = {  }
     }
     render() { 
-        return ( <h1>Devices</h1> );
+        return ( <h2>Devices Table</h2> );
     }
 }
  

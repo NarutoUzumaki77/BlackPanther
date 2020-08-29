@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "./components/common/navbar";
-import DeviceTable from "./components/devices/deviceTable";
+import Devices from './components/devices/devices';
 // import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 
@@ -9,7 +9,7 @@ function App() {
     <div>
       <NavBar />
       <main role="main" className="container">
-        <DeviceTable />
+        <Devices />
       </main>
     </div>
   );

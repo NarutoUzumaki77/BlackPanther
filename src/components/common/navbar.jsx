@@ -69,12 +69,12 @@ const NavBar = () => {
         </ul>
         <button
           style={{ marginRight: "5px" }}
-          className="btn btn-secondary my-2 my-sm-0"
+          className="btn btn-primary my-2 my-sm-0"
           type="submit"
         >
           Register
         </button>
-        <button className="btn btn-secondary my-2 my-sm-0" type="submit">
+        <button className="btn btn-primary my-2 my-sm-0" type="submit">
           Log In
         </button>
       </div>
