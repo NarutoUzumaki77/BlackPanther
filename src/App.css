@@ -26,6 +26,12 @@
   color: #5b5be7;
 }
 
+.center {
+  margin: auto;
+  padding-top: 100px;
+  text-align: center;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
