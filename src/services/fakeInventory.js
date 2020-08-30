@@ -104,14 +104,15 @@ export function getInventoryItem(id) {
 	return inventory.find(i => i.id === id);
 }
 
-export function saveInventoryItem(item) {
+export function saveItem(item) {
 	let ItemInDB = inventory.find(i => i.id === item.id) || {};
 	ItemInDB.product = item.product
 	ItemInDB.type = item.type
 	ItemInDB.manufacturer = item.manufacturer
 	ItemInDB.color = item.color
 	ItemInDB.detail = item.detail
-	ItemInDB.purchase_date = item.purchase_date
+  ItemInDB.purchase_date = item.purchase_date
+  ItemInDB.location = item.location
 	
 	if (!ItemInDB.id) {
     	ItemInDB.id = Date.now().toString();

@@ -79,6 +79,7 @@ class Form extends Component {
     return (
       <SelectOptionField
         name={name}
+        key={name}
         value={data[name]}
         label={label}
         options={options}

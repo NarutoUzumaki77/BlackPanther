@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "../common/form";
-import { getInventoryItem } from "../../services/fakeInventory";
+import { getInventoryItem, saveItem } from "../../services/fakeInventory";
+import { getLocations } from "../../services/fakeCompanyLocation";
 import Joi from "joi-browser";
 
 class DeviceForm extends Form {
@@ -19,6 +20,8 @@ class DeviceForm extends Form {
         status: "",
         details: "",
       },
+      options: [],
+      selectedOption: "",
     };
   }
 
@@ -35,6 +38,8 @@ class DeviceForm extends Form {
   };
 
   componentDidMount() {
+    const locations = getLocations();
+
     const device_id = this.props.match.params.id;
     if (!device_id) return;
 
@@ -50,12 +55,37 @@ class DeviceForm extends Form {
         location: device.location.name,
         status: device.status,
         details: device.details,
-      }
-    })
+      },
+      options: locations,
+      selectedOption: device.location.name,
+    });
   }
 
   doSubmit = () => {
-    console.log("Submit clicked");
+    const { data, options, selectedOption } = this.state;
+    let location = options.find((g) => g.name === selectedOption);
+
+    const device_id = this.props.match.params.id;
+    const formatted_device = this.formatDevice(data, device_id, location);
+
+    saveItem(formatted_device);
+
+    this.props.history.push("/devices");
+  };
+
+  formatDevice = (device, device_id, location) => {
+    return {
+      id: device_id,
+      name: device.name,
+      color: device.color,
+      product: device.product,
+      manufacturer: device.manufacturer,
+      type: device.type,
+      purchase_date: device.purchase_date,
+      location: location,
+      status: device.status,
+      details: device.details,
+    };
   };
 
   render() {
@@ -67,7 +97,7 @@ class DeviceForm extends Form {
         {this.renderInput("manufacturer", "Manufacturer")}
         {this.renderInput("type", "Type")}
         {this.renderInput("purchase_date", "Purchase Date")}
-        {this.renderInput("location", "Location")}
+        {this.renderSelect("location", "Location")}
         {this.renderInput("details", "Details")}
         <button
           disabled={this.validate()}
