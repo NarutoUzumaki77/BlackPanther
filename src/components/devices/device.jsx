@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Device = (props) => {
-  const { device } = props;
+  const { device, onDelete } = props;
   return (
     <tr>
       <td>
@@ -15,14 +15,20 @@ const Device = (props) => {
       <td>{device.location.name}</td>
       <td>{device.manufacturer}</td>
       <td>
-        <button
+        <Link
+          to={`/devices/edit/${device.id}`}
+          device={device}
           type="button"
           className="btn btn-primary"
           style={{ marginRight: "10px" }}
         >
           Edit
-        </button>
-        <button type="button" className="btn btn-danger">
+        </Link>
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={() => onDelete(device)}
+        >
           Delete
         </button>
       </td>

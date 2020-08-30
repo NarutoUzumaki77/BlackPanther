@@ -10,7 +10,7 @@ class Devices extends Component {
     super(props);
     this.state = {
       devices: [],
-      pageSize: 3,
+      pageSize: 4,
       currentPage: 1,
       sortColumn: { path: "name", order: "asc" },
     };
@@ -27,6 +27,11 @@ class Devices extends Component {
 
   handlePageChange = (page) => {
     this.setState({ currentPage: page });
+  };
+
+  handleDelete = (device) => {
+    const devices = this.state.devices.filter((d) => d.id !== device.id);
+    this.setState({ devices })
   };
 
   render() {
@@ -56,6 +61,7 @@ class Devices extends Component {
         <DeviceTable
           columns={columns}
           onSort={this.handleSort}
+          onDelete={this.handleDelete}
           sortColumn={sortColumn}
           devices={sorted_devices}
         />

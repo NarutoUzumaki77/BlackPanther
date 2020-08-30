@@ -3,7 +3,7 @@ import Device from "./device";
 import TableHeader from "../common/tableHeader";
 
 const DeviceTable = (props) => {
-  const { columns, onSort, sortColumn, devices } = props;
+  const { columns, onSort, sortColumn, devices, onDelete } = props;
 
   return (
     <table className="table">
@@ -14,7 +14,11 @@ const DeviceTable = (props) => {
       />
       <tbody>
         {devices.map((device) => (
-          <Device device={device} key={device.id} />
+          <Device 
+            device={device} 
+            onDelete={onDelete} 
+            key={device.id} 
+          />
         ))}
       </tbody>
     </table>
