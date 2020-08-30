@@ -17,7 +17,6 @@ const Device = (props) => {
       <td>
         <Link
           to={`/devices/edit/${device.id}`}
-          device={device}
           type="button"
           className="btn btn-primary"
           style={{ marginRight: "10px" }}
