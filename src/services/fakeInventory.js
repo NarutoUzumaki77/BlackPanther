@@ -96,7 +96,7 @@ const inventory = [
 // 	const dateAssigned = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
 // }
 
-export function getAllInventoryItems() {
+export function getAllItems() {
 	return inventory;
 }
 
@@ -122,7 +122,7 @@ export function saveItem(item) {
   	return ItemInDB;
 }
 
-export function deleteInventoryItem(id) {
+export function deleteItem(id) {
 	let ItemInDB = inventory.find(i => i.id === id);
 	inventory.splice(inventory.indexOf(ItemInDB), 1)
 	return inventory

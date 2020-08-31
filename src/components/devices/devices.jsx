@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Pagination from "../common/pagination";
 import DeviceTable from "./deviceTable";
 import { paginate } from "../../utils/paginate";
-import { getAllInventoryItems } from "../../services/fakeInventory";
+import { getAllItems, deleteItem } from "../../services/fakeInventory";
 import _ from "lodash";
 
 class Devices extends Component {
@@ -17,7 +17,7 @@ class Devices extends Component {
   }
 
   componentDidMount() {
-    const devices = getAllInventoryItems();
+    const devices = getAllItems();
     this.setState({ devices });
   }
 
@@ -31,7 +31,8 @@ class Devices extends Component {
 
   handleDelete = (device) => {
     const devices = this.state.devices.filter((d) => d.id !== device.id);
-    this.setState({ devices })
+    deleteItem(device.id);
+    this.setState({ devices });
   };
 
   render() {
