@@ -3,6 +3,7 @@ import Pagination from "../common/pagination";
 import DeviceTable from "./deviceTable";
 import { paginate } from "../../utils/paginate";
 import { getAllItems, deleteItem } from "../../services/fakeInventory";
+import { Link } from "react-router-dom";
 import _ from "lodash";
 
 class Devices extends Component {
@@ -18,6 +19,7 @@ class Devices extends Component {
 
   componentDidMount() {
     const devices = getAllItems();
+    console.log(devices);
     this.setState({ devices });
   }
 
@@ -58,7 +60,18 @@ class Devices extends Component {
 
     return (
       <div className="container">
-        <h2>Devices</h2>
+        <div className="row">
+          <div className="col-md-auto">
+            <h2>Devices</h2>
+          </div>
+          <div className="col">
+            <h2 style={{ textAlign: "right" }}>
+              <Link to="/devices/new" type="button" className="btn btn-primary">
+                Add Device
+              </Link>
+            </h2>
+          </div>
+        </div>
         <DeviceTable
           columns={columns}
           onSort={this.handleSort}

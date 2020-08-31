@@ -13,6 +13,7 @@ function App() {
       <NavBar />
       <main role="main" className="container">
         <Switch>
+          <Route exact path="/devices/new" component={DeviceForm} />
           <Route  exact path="/devices/edit/:id" component={DeviceForm} />
           <Route  exact path="/devices/:id" component={DeviceDetails} />
           <Route path="/devices" component={Devices} />

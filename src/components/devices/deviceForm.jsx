@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "../common/form";
-import { getInventoryItem, saveItem } from "../../services/fakeInventory";
+import { getItem, saveItem } from "../../services/fakeInventory";
 import { getLocations } from "../../services/fakeCompanyLocation";
 import Joi from "joi-browser";
 
@@ -38,12 +38,29 @@ class DeviceForm extends Form {
   };
 
   componentDidMount() {
+    const device_id = this.props.match.params.id;
     const locations = getLocations();
 
-    const device_id = this.props.match.params.id;
-    if (!device_id) return;
+    if (!device_id) {
+      this.setState({
+        options: locations,
+        selectedOption: locations[0].name,
+        data: {
+          name: "",
+          color: "",
+          product: "",
+          manufacturer: "",
+          type: "",
+          purchase_date: "",
+          location: locations[0].name,
+          status: "Available",
+          details: "",
+        },
+      });
+      return;
+    }
 
-    const device = getInventoryItem(device_id);
+    const device = getItem(device_id);
     this.setState({
       data: {
         name: device.name,
@@ -65,7 +82,8 @@ class DeviceForm extends Form {
     const { data, options, selectedOption } = this.state;
     let location = options.find((g) => g.name === selectedOption);
 
-    const device_id = this.props.match.params.id;
+    let device_id = this.props.match.params.id;
+    if (!device_id) device_id = null;
     const formatted_device = this.formatDevice(data, device_id, location);
 
     saveItem(formatted_device);

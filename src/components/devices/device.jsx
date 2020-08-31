@@ -21,14 +21,14 @@ const Device = (props) => {
           className="btn btn-primary"
           style={{ marginRight: "10px" }}
         >
-          Edit
+          <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
         </Link>
         <button
           type="button"
           className="btn btn-danger"
           onClick={() => onDelete(device)}
         >
-          Delete
+          <i className="fa fa-trash-o" aria-hidden="true"></i>
         </button>
       </td>
     </tr>

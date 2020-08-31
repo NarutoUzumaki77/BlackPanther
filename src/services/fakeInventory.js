@@ -100,17 +100,19 @@ export function getAllItems() {
 	return inventory;
 }
 
-export function getInventoryItem(id) {
+export function getItem(id) {
 	return inventory.find(i => i.id === id);
 }
 
 export function saveItem(item) {
-	let ItemInDB = inventory.find(i => i.id === item.id) || {};
+  let ItemInDB = inventory.find(i => i.id === item.id) || {};
+  ItemInDB.name = item.name
+  ItemInDB.status = item.status
 	ItemInDB.product = item.product
 	ItemInDB.type = item.type
 	ItemInDB.manufacturer = item.manufacturer
 	ItemInDB.color = item.color
-	ItemInDB.detail = item.detail
+	ItemInDB.details = item.details
   ItemInDB.purchase_date = item.purchase_date
   ItemInDB.location = item.location
 	

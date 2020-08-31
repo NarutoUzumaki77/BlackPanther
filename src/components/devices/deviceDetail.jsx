@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getInventoryItem } from "../../services/fakeInventory";
+import { getItem } from "../../services/fakeInventory";
 
 class DeviceDetail extends Component {
   constructor(props) {
@@ -12,7 +12,8 @@ class DeviceDetail extends Component {
   }
 
   componentDidMount() {
-    const detail = getInventoryItem(this.props.match.params.id);
+    const detail = getItem(this.props.match.params.id);
+
     this.setState({
       detail,
       location: detail.location.name,
@@ -22,7 +23,7 @@ class DeviceDetail extends Component {
 
   goBack = () => {
     this.props.history.push("/");
-  }
+  };
 
   render() {
     const {
