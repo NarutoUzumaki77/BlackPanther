@@ -13,6 +13,10 @@ class DeviceDetail extends Component {
 
   componentDidMount() {
     const detail = getItem(this.props.match.params.id);
+    if (!detail) {
+      this.props.history.push("/404");
+      return;
+    }
 
     this.setState({
       detail,

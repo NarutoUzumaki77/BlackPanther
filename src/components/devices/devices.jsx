@@ -19,7 +19,6 @@ class Devices extends Component {
 
   componentDidMount() {
     const devices = getAllItems();
-    console.log(devices);
     this.setState({ devices });
   }
 

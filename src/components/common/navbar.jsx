@@ -3,7 +3,10 @@ import { NavLink, Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav
+      className="navbar navbar-expand-lg navbar-light bg-light"
+      style={{ marginBottom: "15px" }}
+    >
       <Link className="navbar-brand" to="/">
         Wakanda
       </Link>

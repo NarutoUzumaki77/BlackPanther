@@ -61,6 +61,11 @@ class DeviceForm extends Form {
     }
 
     const device = getItem(device_id);
+    if (!device) {
+      this.props.history.push("/404");
+      return;
+    }
+
     this.setState({
       data: {
         name: device.name,
