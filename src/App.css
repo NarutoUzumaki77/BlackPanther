@@ -32,6 +32,10 @@
   text-align: center;
 }
 
+body .bg-nav {
+  background-color: #d3ddf3
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

@@ -11,7 +11,7 @@ class Devices extends Component {
     super(props);
     this.state = {
       devices: [],
-      pageSize: 10,
+      pageSize: 5,
       currentPage: 1,
       sortColumn: { path: "name", order: "asc" },
     };

@@ -4,7 +4,7 @@ const NotFound = () => {
   return (
     <div className="center">
       <i
-        class="fa fa-frown-o"
+        className="fa fa-frown-o"
         aria-hidden="true"
         style={{ fontSize: "200px" }}
       ></i>
