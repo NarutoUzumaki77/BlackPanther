@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 
 const NavBar = () => {
   return (
@@ -12,22 +12,17 @@ const NavBar = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <NavDropdown title="Device" id="basic-nav-dropdown">
-            <NavDropdown.Item as={Link} to='/devices' >All Devices</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/devices">
+              All Devices
+            </NavDropdown.Item>
             <NavDropdown.Item to="/action/3.2">
               Assigned Device
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
-        <button
-          style={{ marginRight: "5px" }}
-          className="btn btn-primary my-2 my-sm-0"
-          type="submit"
-        >
-          Register
-        </button>
-        <button className="btn btn-primary my-2 my-sm-0" type="submit">
-          Log In
-        </button>
+        <Link to="/login">
+          <Button variant="primary">Login</Button>
+        </Link>
       </Navbar.Collapse>
     </Navbar>
   );

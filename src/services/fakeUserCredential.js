@@ -23,6 +23,13 @@ const credentials = [
     id: "1598315656239",
     username: "navi@gmail.com",		
     password: "password"
+  },
+  {
+    id: "1598314636239",
+    username: "admin@gmail.com",		
+    password: "password",
+    roleId: 1,
+    change_password: false
   }
 ]
 

@@ -4,6 +4,7 @@ import DeviceTable from "./deviceTable";
 import { paginate } from "../../utils/paginate";
 import { getAllItems, deleteItem } from "../../services/fakeInventory";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import _ from "lodash";
 
 class Devices extends Component {
@@ -65,8 +66,8 @@ class Devices extends Component {
           </div>
           <div className="col">
             <h2 style={{ textAlign: "right" }}>
-              <Link to="/devices/new" type="button" className="btn btn-primary">
-                Add Device
+              <Link to="/devices/new">
+                <Button variant="primary">Add Device</Button>
               </Link>
             </h2>
           </div>

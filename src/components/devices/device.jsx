@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Device = (props) => {
   const { device, onDelete } = props;
@@ -15,13 +16,10 @@ const Device = (props) => {
       <td>{device.location.name}</td>
       <td>{device.manufacturer}</td>
       <td>
-        <Link
-          to={`/devices/edit/${device.id}`}
-          type="button"
-          className="btn btn-primary"
-          style={{ marginRight: "10px" }}
-        >
-          <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <Link to={`/devices/edit/${device.id}`} style={{ marginRight: "10px" }}>
+          <Button variant="primary">
+            <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </Button>
         </Link>
         <button
           type="button"
