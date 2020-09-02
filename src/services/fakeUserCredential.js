@@ -44,6 +44,7 @@ export function signIn(username, password) {
   let data = credentials.find(
     (user) => user.username === username && user.password === password
   );
+  if (!data) return;
   const permissions = getPermissions(data.roleId);
   data.permissions = permissions;
   if (data) return generateJWT(data);
@@ -68,7 +69,7 @@ function generateJWT(data) {
   let signature = CryptoJS.HmacSHA256(token, secret);
   signature = base64url(signature);
 
-  return token + "." + signature;;
+  return token + "." + signature;
 }
 
 function base64url(source) {

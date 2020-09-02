@@ -25,12 +25,15 @@ class LoginForm extends Form {
     const { username, password } = this.state.data;
     const token = signIn(username, password);
     if (!token) {
-      console.log("Login Failed");
+      const errors = { ...this.state.errors };
+      errors.password = "Username or Password is Incorrect";
+      this.setState({ errors });
       return;
     }
 
     localStorage.setItem("token", token);
-    this.props.history.push("/devices");
+    // this.props.history.push("/devices");
+    window.location.reload(false);
   };
 
   render() {
