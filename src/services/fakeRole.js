@@ -1,7 +1,7 @@
 const role = [
   {
     id: 1,
-    title: admin,
+    title: "admin",
     roles: [{ id: 2 }],
     permissions: [
       {
@@ -29,3 +29,9 @@ const role = [
     ],
   },
 ];
+
+export function getPermissions(role_id) {
+  const user_role = role.find((r) => r.id === role_id);
+  return user_role.permissions;
+}
+

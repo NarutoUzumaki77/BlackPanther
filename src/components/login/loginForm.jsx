@@ -23,12 +23,13 @@ class LoginForm extends Form {
 
   doSubmit = () => {
     const { username, password } = this.state.data;
-    const isSignIn = signIn(username, password);
-    if (!isSignIn) {
+    const token = signIn(username, password);
+    if (!token) {
       console.log("Login Failed");
       return;
     }
 
+    localStorage.setItem("token", token);
     this.props.history.push("/devices");
   };
 
