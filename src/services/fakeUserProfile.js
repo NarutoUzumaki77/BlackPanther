@@ -74,6 +74,21 @@ const userProfile = [
     "dateCreated": "2017-08-21T13:15:31",
     "dateUpdated": "2017-08-24T14:21:15",
     "id": "dUze7lyo9s347kioAZ3FHt"
+  },
+  {
+    "address": "16-83 Gage Street",
+    "city": "Kitchener",
+    "state": "Ontario",
+    "country": "Canada",
+    "dob": "1989-12-13",
+    "firstName": "Gilbert",
+    "lastName": "Awesome",
+    "email": "admin@gmail.com",
+    "mobilePhone": "+18071739087",
+    "zipCode": "N2J6E5",
+    "dateCreated": "2017-08-21T13:15:31",
+    "dateUpdated": "2017-08-24T14:21:15",
+    "id": "dUze7lyo9s347kioAZ3FHt"
   }
 ]
 

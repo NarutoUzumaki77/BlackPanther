@@ -5,7 +5,7 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 const NavBar = ({ user }) => {
   const name = "   " + user.profile.firstName + " " + user.profile.lastName;
   return (
-    <Navbar className="bg-nav" expand="lg" style={{ marginBottom: "15px" }}>
+    <Navbar className="bg-nav" expand="sm" style={{ marginBottom: "10px" }}>
       <Link to="/">
         <Navbar.Brand>Wakanda</Navbar.Brand>
       </Link>
@@ -37,7 +37,7 @@ const NavBar = ({ user }) => {
             </Nav>
           </Navbar.Text>
         </Navbar.Collapse>
-        <i class="fa fa-user" aria-hidden="true" style={{ fontSize: "25px"}}></i>
+        <i className="fa fa-user" aria-hidden="true" style={{ fontSize: "25px"}}></i>
       </Navbar.Collapse>
     </Navbar>
   );

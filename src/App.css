@@ -26,6 +26,10 @@
   color: #428bca;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .center {
   margin: auto;
   padding-top: 100px;

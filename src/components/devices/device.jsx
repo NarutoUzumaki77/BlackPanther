@@ -16,11 +16,11 @@ const Device = (props) => {
       <td>{device.color}</td>
       <td>{device.location.name}</td>
       <td>{device.manufacturer}</td>
-      <td>
-        {isAuthorized("delete:device") && (
+      <td style={{ textAlign: "right" }}>
+        {isAuthorized("patch:device") && (
           <Link
             to={`/devices/edit/${device.id}`}
-            style={{ marginRight: "10px" }}
+            style={{ marginRight: "5px" }}
           >
             <Button variant="primary">
               <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
