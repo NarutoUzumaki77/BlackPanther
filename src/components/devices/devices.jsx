@@ -5,6 +5,7 @@ import { paginate } from "../../utils/paginate";
 import { getAllItems, deleteItem } from "../../services/fakeInventory";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { isAuthorized } from "../../utils/authorization";
 import _ from "lodash";
 
 class Devices extends Component {
@@ -64,13 +65,15 @@ class Devices extends Component {
           <div className="col-md-auto">
             <h2>Devices</h2>
           </div>
-          <div className="col">
-            <h2 style={{ textAlign: "right" }}>
-              <Link to="/devices/new">
-                <Button variant="primary">Add Device</Button>
-              </Link>
-            </h2>
-          </div>
+          {isAuthorized("post:device") && (
+            <div className="col">
+              <h2 style={{ textAlign: "right" }}>
+                <Link to="/devices/new">
+                  <Button variant="primary">Add Device</Button>
+                </Link>
+              </h2>
+            </div>
+          )}
         </div>
         <DeviceTable
           columns={columns}

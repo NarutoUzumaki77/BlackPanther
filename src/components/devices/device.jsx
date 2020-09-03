@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { isAuthorized } from "../../utils/authorization";
 
 const Device = (props) => {
   const { device, onDelete } = props;
@@ -16,18 +17,26 @@ const Device = (props) => {
       <td>{device.location.name}</td>
       <td>{device.manufacturer}</td>
       <td>
-        <Link to={`/devices/edit/${device.id}`} style={{ marginRight: "10px" }}>
-          <Button variant="primary">
-            <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
-          </Button>
-        </Link>
-        <button
-          type="button"
-          className="btn btn-danger"
-          onClick={() => onDelete(device)}
-        >
-          <i className="fa fa-trash-o" aria-hidden="true"></i>
-        </button>
+        {isAuthorized("delete:device") && (
+          <Link
+            to={`/devices/edit/${device.id}`}
+            style={{ marginRight: "10px" }}
+          >
+            <Button variant="primary">
+              <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </Button>
+          </Link>
+        )}
+
+        {isAuthorized("delete:device") && (
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={() => onDelete(device)}
+          >
+            <i className="fa fa-trash-o" aria-hidden="true"></i>
+          </button>
+        )}
       </td>
     </tr>
   );

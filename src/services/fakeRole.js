@@ -5,15 +5,15 @@ const role = [
     roles: [{ id: 2 }],
     permissions: [
       {
-        title: "post:device",
+        action: "post:device",
         description: "create device",
       },
       {
-        title: "patch:device",
+        action: "patch:device",
         description: "update device",
       },
       {
-        title: "delete:device",
+        action: "delete:device",
         description: "delete device",
       },
     ],
@@ -23,7 +23,7 @@ const role = [
     title: "staff",
     permissions: [
       {
-        title: "get:device",
+        action: "get:device",
         description: "get device",
       },
     ],
@@ -34,4 +34,6 @@ export function getPermissions(role_id) {
   const user_role = role.find((r) => r.id === role_id);
   return user_role.permissions;
 }
+
+
 
