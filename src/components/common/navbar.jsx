@@ -17,6 +17,9 @@ const NavBar = ({ user }) => {
               All Devices
             </NavDropdown.Item>
             <NavDropdown.Item to="/action/3.2">
+              Pending
+            </NavDropdown.Item>
+            <NavDropdown.Item to="/action/3.2">
               Assigned Device
             </NavDropdown.Item>
           </NavDropdown>

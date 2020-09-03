@@ -62,32 +62,32 @@ const inventory = [
   }
 ]
 
-// const assignInventory = [
-//   {
-//     "userId": "dUze4lyo9s397kioAZ3SHn",
-//     "inventoryId": "dUze4lyo9h397kidAZ3SHu",
-//     "status": "recieved",
-//     "from_user": "",
-//     "dateAssigned": "2017-08-21",
-//     "id": "dUze4lyo9s397"
-//   },
-//   {
-//     "userId": "dUze4lyo9s397kioAZ3SHn",
-//     "inventoryId": "dUze4lyo9s397kirAZ3SHu",
-//     "status": "recieved",
-//     "from_user": "",
-//     "dateAssigned": "2017-08-21",
-//     "id": "dUze4lyo4s397"
-//   },
-//   {
-//     "userId": "dUze4lyo9s347kioAZ3SHt",
-//     "inventoryId": "dUze4lyo9s397kioAZ3SHn",
-//     "status": "recieved",
-//     "from_user": "",
-//     "dateAssigned": "2017-08-21",
-//     "id": "dUze4g3o4s397"
-//   }
-// ]
+const assignInventory = [
+  {
+    "userId": "1597314636239",
+    "inventoryId": "dUze4lyo9s397kioAZ3SHn",
+    "status": "recieved",
+    "from_user": "",
+    "dateAssigned": "2020-08-21",
+    "id": "dUze4lyo9s397"
+  },
+  {
+    "userId": "1598314636239",
+    "inventoryId": "dUze4lyo9s397kudAZ3SHu",
+    "status": "recieved",
+    "from_user": "",
+    "dateAssigned": "2020-08-21",
+    "id": "dUze4lyo4s397"
+  },
+  {
+    "userId": "1598315656239",
+    "inventoryId": "dUze4lyo9s397kidAZ3SHu",
+    "status": "recieved",
+    "from_user": "",
+    "dateAssigned": "2019-08-21",
+    "id": "dUze4g3o4s397"
+  }
+]
 
 // export function assignItemToUser(item_id, user_id) {
 // 	let ItemInDB = inventory.find(i => i.id === item_id)
