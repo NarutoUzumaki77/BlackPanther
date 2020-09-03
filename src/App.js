@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <div>
         {!user && <LoginForm />}
-        {user && <NavBar />}
+        {user && <NavBar user={user}/>}
         {user && <main role="main" className="container">
           <Switch>
             <Route path="/login" component={LoginForm} />

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 
-const NavBar = () => {
+const NavBar = ({ user }) => {
   return (
     <Navbar className="bg-nav" expand="lg" style={{ marginBottom: "15px" }}>
       <Link to="/">
@@ -20,9 +20,14 @@ const NavBar = () => {
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
-        <Link to="/login">
-          <Button variant="primary">Login</Button>
-        </Link>
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+            Signed in as:{" "}
+            <a href="#login">
+              {user.profile.firstName} {user.profile.lastName}
+            </a>
+          </Navbar.Text>
+        </Navbar.Collapse>
       </Navbar.Collapse>
     </Navbar>
   );

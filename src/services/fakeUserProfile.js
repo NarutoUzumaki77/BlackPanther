@@ -102,7 +102,7 @@ export function createUser(user) {
     	userInDb.id = Date.now().toString();
     	userProfile.push(userInDb);
     	
-    	# Todo add to login info too
+    	// Todo add to login info too
   	}
   	
   	return userInDb;

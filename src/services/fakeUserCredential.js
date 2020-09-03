@@ -1,31 +1,42 @@
 import CryptoJS from "crypto-js";
 import { getPermissions } from "./fakeRole";
+import { getUserProfile } from "./fakeUserProfile";
 
 const credentials = [
   {
     id: "1598315436667",
     username: "john@gmail.com",
     password: "password",
+    roleId: 2,
+    change_password: false,
   },
   {
     id: "1598315516158",
     username: "tom@gmail.com",
     password: "password",
+    roleId: 2,
+    change_password: false,
   },
   {
     id: "1598315595030",
     username: "mary@gmail.com",
     password: "password",
+    roleId: 2,
+    change_password: false,
   },
   {
     id: "1598315629452",
     username: "elaine@gmail.com",
     password: "password",
+    roleId: 2,
+    change_password: false,
   },
   {
     id: "1598315656239",
     username: "navi@gmail.com",
     password: "password",
+    roleId: 2,
+    change_password: false,
   },
   {
     id: "1598314636239",
@@ -46,7 +57,9 @@ export function signIn(username, password) {
   );
   if (!data) return;
   const permissions = getPermissions(data.roleId);
+  const profile = getUserProfile(username);
   data.permissions = permissions;
+  data.profile = profile;
   if (data) return generateJWT(data);
 }
 
