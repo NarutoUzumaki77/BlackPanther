@@ -37,6 +37,7 @@ const NavBar = ({ user }) => {
             </Nav>
           </Navbar.Text>
         </Navbar.Collapse>
+        <i class="fa fa-user" aria-hidden="true" style={{ fontSize: "25px"}}></i>
       </Navbar.Collapse>
     </Navbar>
   );

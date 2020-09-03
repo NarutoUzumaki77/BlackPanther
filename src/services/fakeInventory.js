@@ -9,7 +9,7 @@ const inventory = [
     "details": "6.5-inch (diagonal) all-screen OLED Multi‑Touch display, Super Retina XDR display, HDR display, 2688-by-1242-pixel resolution at 458 ppi",
     "purchase_date": "2019-08-21",
     "location": {"id": "1598692204147", "name": "Toronto"},
-    "status": "Available",
+    "status": "Active",
     "id": "dUze4lyo9s397kioAZ3SHn"
   },
   {
@@ -21,7 +21,7 @@ const inventory = [
     "details": "6.5-inch (diagonal) all-screen OLED Multi‑Touch display, Super Retina XDR display, HDR display, 2688-by-1242-pixel resolution at 458 ppi",
     "purchase_date": "2019-08-21",
     "location": {"id": "1598692204147", "name": "Toronto"},
-    "status": "Available",
+    "status": "Active",
     "id": "dUze4lyo9s397kirAZ3SHn"
   },
   {
@@ -33,7 +33,7 @@ const inventory = [
     "details": "6.5-inch (diagonal) all-screen OLED Multi‑Touch display, Super Retina XDR display, HDR display, 2688-by-1242-pixel resolution at 458 ppi",
     "purchase_date": "2019-08-21",
     "location": {"id": "1598692204147", "name": "Toronto"},
-    "status": "Available",
+    "status": "Active",
     "id": "dUze4lyo9s397kirAZ3SHu"
   },
   {
@@ -45,7 +45,7 @@ const inventory = [
     "details": "6.5-inch (diagonal) all-screen OLED Multi‑Touch display, Super Retina XDR display, HDR display, 2688-by-1242-pixel resolution at 458 ppi",
     "purchase_date": "2019-08-21",
     "location": {"id": "1598692204247", "name": "Waterloo"},
-    "status": "Available",
+    "status": "Active",
     "id": "dUze4lyo9s397kidAZ3SHu"
   },
   {
@@ -57,7 +57,7 @@ const inventory = [
     "details": "6.5-inch (diagonal) all-screen OLED Multi‑Touch display, Super Retina XDR display, HDR display, 2688-by-1242-pixel resolution at 458 ppi",
     "purchase_date": "2019-08-21",
     "location": {"id": "1598692204147", "name": "Toronto"},
-    "status": "Available",
+    "status": "Active",
     "id": "dUze4lyo9s397kudAZ3SHu"
   }
 ]
