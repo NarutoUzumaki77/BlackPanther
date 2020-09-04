@@ -38,7 +38,7 @@ class DeviceDetail extends Component {
     } = this.state.detail;
 
     return (
-      <React.Fragment>
+      <div>
         <div className="corners2 container">
           <div
             className="row"
@@ -110,8 +110,8 @@ class DeviceDetail extends Component {
             </div>
           </div>
         </div>
-        <Reassign device={this.state.details}/>
-      </React.Fragment>
+        <Reassign detail_id={this.props.match.params.id}/>
+      </div>
     );
   }
 }

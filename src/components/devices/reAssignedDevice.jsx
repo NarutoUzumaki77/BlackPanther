@@ -3,6 +3,7 @@ import Form from "../common/form";
 import Joi from "joi-browser";
 import { decode_token } from "../../utils/authorization";
 import { getAllUser } from "../../services/fakeUserProfile";
+import { isItemAssignedToUser } from "../../services/fakeInventory";
 
 class Reassign extends Form {
   constructor(props) {
@@ -14,6 +15,7 @@ class Reassign extends Form {
       },
       options: [],
       selectedOption: "",
+      canReassignUser: true,
     };
   }
 
@@ -21,7 +23,7 @@ class Reassign extends Form {
     users: Joi.required().label("Users"),
   };
 
-  componentDidMount() {
+  componentDidMount = () => {
     const currentUser = decode_token();
     let allUsers = getAllUser();
 
@@ -35,25 +37,34 @@ class Reassign extends Form {
       };
     });
 
+    const isDeviceAssignedToUser = isItemAssignedToUser(
+      this.props.detail_id,
+      currentUser.profile.id
+    );
+
     this.setState({
+      currentUser,
       options: allUsers,
       selectedOption: allUsers[0].name,
       data: { users: allUsers },
+      canReassignUser: isDeviceAssignedToUser,
     });
-  }
+  };
 
   doSubmit = () => {
     console.log(this.state.selectedOption);
   };
 
   render() {
+    const { canReassignUser } = this.state;
+
     return (
       <div>
         <h4>Reassign Device</h4>
         <form onSubmit={this.handleSubmit}>
           {this.renderSelect("users", "Users")}
           <button
-            disabled={this.validate()}
+            disabled={!canReassignUser}
             type="Save"
             className="btn btn-primary"
           >

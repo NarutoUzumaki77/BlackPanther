@@ -20,8 +20,9 @@ class AssignedDevice extends Component {
   componentDidMount() {
     const devices = getAllItems();
     const user = decode_token();
-    const assigned_device = devices.filter(
-      (device) => device.assigned.id === user.profile.id
+    let assigned_device = devices.filter(
+      (device) =>
+        device.assigned.id === user.profile.id
     );
     this.setState({ devices: assigned_device });
   }

@@ -74,6 +74,7 @@ const assignInventory = [
     inventoryId: "dUze4lyo9s397kioAZ3SHn",
     status: "recieved",
     from_user: "",
+    new_user: "",
     dateAssigned: "2020-08-21",
     id: "dUze4lyo9s397",
   },
@@ -82,6 +83,7 @@ const assignInventory = [
     inventoryId: "dUze4lyo9s397kudAZ3SHu",
     status: "recieved",
     from_user: "",
+    new_user: "",
     dateAssigned: "2020-08-21",
     id: "dUze4lyo4s397",
   },
@@ -90,23 +92,39 @@ const assignInventory = [
     inventoryId: "dUze4lyo9s397kidAZ3SHu",
     status: "recieved",
     from_user: "",
+    new_user: "",
     dateAssigned: "2019-08-21",
     id: "dUze4g3o4s397",
   },
 ];
 
-// export function assignItemToUser(item_id, user_id) {
-// 	let ItemInDB = inventory.find(i => i.id === item_id)
+export function assignItemToUser(item_id, user_id) {
+  const d = new Date();
+  const dateAssigned = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate();
 
-// 	const d = new Date()
-// 	const dateAssigned = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
-// }
+  const assigned = assignInventory.find((item) => item.inventoryId === item_id);
+  assigned.dateAssigned = dateAssigned;
+  assigned.status = "pending";
+  assigned.new_user = user_id;
+
+  return assigned;
+}
+
+export function isItemAssignedToUser(item_id, user_id) {
+  const isAssigned = assignInventory.find(
+    (item) =>
+      item.inventoryId === item_id &&
+      item.userId === user_id &&
+      item.status === "recieved"
+  );
+  return isAssigned ? true : false;
+}
 
 export function getAllItems() {
   return inventory.map((i) => {
     const assigned = getAssignedUser(i.id);
     if (!assigned) {
-      i.assigned = {id: "", name: "-"};
+      i.assigned = { id: "", name: "-" };
       return i;
     }
 
@@ -114,6 +132,7 @@ export function getAllItems() {
     i.assigned = {
       id: assigned.userId,
       name: `${userProfile.firstName} ${userProfile.lastName}`,
+      status: assigned.status,
     };
     return i;
   });
@@ -124,7 +143,20 @@ function getAssignedUser(inventoryId) {
 }
 
 export function getItem(id) {
-  return inventory.find((i) => i.id === id);
+  const item = inventory.find((i) => i.id === id);
+  const assigned = getAssignedUser(item.id);
+  if (!assigned) {
+    item.assigned = { id: "", name: "-" };
+    return item;
+  }
+
+  const userProfile = getUserProfileById(assigned.userId);
+  item.assigned = {
+    id: assigned.userId,
+    name: `${userProfile.firstName} ${userProfile.lastName}`,
+    status: assigned.status,
+  };
+  return item;
 }
 
 export function saveItem(item) {
