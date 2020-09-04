@@ -25,10 +25,6 @@ class DeviceDetail extends Component {
     });
   }
 
-  goBack = () => {
-    this.props.history.push("/");
-  };
-
   render() {
     const {
       color,
@@ -113,12 +109,6 @@ class DeviceDetail extends Component {
             </div>
           </div>
         </div>
-        <i
-          className="fa fa-backward back-arrow"
-          aria-hidden="true"
-          style={{ fontSize: "30px" }}
-          onClick={this.goBack}
-        ></i>
       </React.Fragment>
     );
   }
