@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import Pagination from "../common/pagination";
-import DeviceTable from "./deviceTable";
-import { paginate } from "../../utils/paginate";
 import { getAllItems, deleteItem } from "../../services/fakeInventory";
+import { decode_token } from "../../utils/authorization";
+import { paginate } from "../../utils/paginate";
+import DeviceTable from "./deviceTable";
+import Pagination from "../common/pagination";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { isAuthorized } from "../../utils/authorization";
 import _ from "lodash";
 
-class Devices extends Component {
+class AssignedDevice extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +22,11 @@ class Devices extends Component {
 
   componentDidMount() {
     const devices = getAllItems();
-    this.setState({ devices });
+    const user = decode_token();
+    const assigned_device = devices.filter(
+      (device) => device.assigned.id === user.profile.id
+    );
+    this.setState({ devices: assigned_device });
   }
 
   handleSort = (sortColumn) => {
@@ -51,7 +56,6 @@ class Devices extends Component {
       { path: "tenant", label: "Tenant" },
       { path: "h" },
     ];
-
     const sorted = _.orderBy(devices, [sortColumn.path], [sortColumn.order]);
 
     const sorted_devices = paginate(
@@ -64,17 +68,8 @@ class Devices extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-auto">
-            <h2>Devices</h2>
+            <h2>Assigned Devices</h2>
           </div>
-          {isAuthorized("post:device") && (
-            <div className="col">
-              <h2 style={{ textAlign: "right" }}>
-                <Link to="/devices/new">
-                  <Button variant="primary">Add Device</Button>
-                </Link>
-              </h2>
-            </div>
-          )}
         </div>
         <DeviceTable
           columns={columns}
@@ -94,4 +89,4 @@ class Devices extends Component {
   }
 }
 
-export default Devices;
+export default AssignedDevice;

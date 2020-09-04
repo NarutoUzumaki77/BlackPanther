@@ -19,8 +19,8 @@ const NavBar = ({ user }) => {
             <NavDropdown.Item to="/action/3.2">
               Pending
             </NavDropdown.Item>
-            <NavDropdown.Item to="/action/3.2">
-              Assigned Device
+            <NavDropdown.Item as={Link} to="/devices/assigned">
+              Assigned Devices
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
