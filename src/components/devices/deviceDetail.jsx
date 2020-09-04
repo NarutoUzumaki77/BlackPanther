@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getItem } from "../../services/fakeInventory";
+import Reassign from './reAssignedDevice';
 
 class DeviceDetail extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class DeviceDetail extends Component {
 
     return (
       <React.Fragment>
-        <div className="corners2 container" style={{ marginTop: "50px" }}>
+        <div className="corners2 container">
           <div
             className="row"
             style={{ marginBottom: "10px", paddingLeft: "50px" }}
@@ -109,6 +110,7 @@ class DeviceDetail extends Component {
             </div>
           </div>
         </div>
+        <Reassign device={this.state.details}/>
       </React.Fragment>
     );
   }

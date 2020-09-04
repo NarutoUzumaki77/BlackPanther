@@ -4,9 +4,6 @@ import { decode_token } from "../../utils/authorization";
 import { paginate } from "../../utils/paginate";
 import DeviceTable from "./deviceTable";
 import Pagination from "../common/pagination";
-import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import { isAuthorized } from "../../utils/authorization";
 import _ from "lodash";
 
 class AssignedDevice extends Component {
