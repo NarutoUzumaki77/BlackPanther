@@ -21,6 +21,7 @@ class Devices extends Component {
 
   componentDidMount() {
     const devices = getAllItems();
+    console.log(devices);
     this.setState({ devices });
   }
 
@@ -48,6 +49,7 @@ class Devices extends Component {
       { path: "color", label: "Color" },
       { path: "location", label: "Location" },
       { path: "manufacturer", label: "Manufacturer" },
+      { path: "tenant", label: "Tenant" },
       { path: "h" },
     ];
 

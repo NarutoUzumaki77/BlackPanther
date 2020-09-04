@@ -16,6 +16,7 @@ const Device = (props) => {
       <td>{device.color}</td>
       <td>{device.location.name}</td>
       <td>{device.manufacturer}</td>
+      <td>{device.assigned.name}</td>
       <td style={{ textAlign: "right" }}>
         {isAuthorized("patch:device") && (
           <Link
