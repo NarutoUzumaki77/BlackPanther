@@ -5,6 +5,7 @@ import DeviceDetails from "./components/devices/deviceDetail";
 import LoginForm from "./components/login/loginForm";
 import DeviceForm from "./components/devices/deviceForm";
 import AssignedDevice from "./components/devices/assignedDevice";
+import PendingDeviceStatus from "./components/devices/pendingDevice";
 import NotFound from "./components/notFound";
 import LougOut from "./components/login/logout";
 import { decode_token } from "./utils/authorization";
@@ -31,6 +32,10 @@ class App extends Component {
             <Switch>
               <Route path="/login" component={LoginForm} />
               <Route path="/logout" component={LougOut} />
+              <Route
+                path="/devices/pending"
+                render={(props) => <PendingDeviceStatus user={user}/>}
+              />
               <Route path="/devices/assigned" component={AssignedDevice} />
               <Route exact path="/devices/new" component={DeviceForm} />
               <Route exact path="/devices/edit/:id" component={DeviceForm} />

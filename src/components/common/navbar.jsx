@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 const NavBar = ({ user }) => {
-  const name = "   " + user.profile.firstName + " " + user.profile.lastName;
+  const name = user.profile.firstName + " " + user.profile.lastName;
   return (
     <Navbar className="bg-nav" expand="sm" style={{ marginBottom: "10px" }}>
       <Link to="/">
@@ -16,7 +16,7 @@ const NavBar = ({ user }) => {
             <NavDropdown.Item as={Link} to="/devices">
               All Devices
             </NavDropdown.Item>
-            <NavDropdown.Item to="/action/3.2">
+            <NavDropdown.Item as={Link} to="/devices/pending">
               Pending
             </NavDropdown.Item>
             <NavDropdown.Item as={Link} to="/devices/assigned">
@@ -35,12 +35,18 @@ const NavBar = ({ user }) => {
                 <NavDropdown.Item to="/action/3.2" disabled>
                   Edit Password
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/logout">Log Out</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/logout">
+                  Log Out
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Text>
         </Navbar.Collapse>
-        <i className="fa fa-user" aria-hidden="true" style={{ fontSize: "25px"}}></i>
+        <i
+          className="fa fa-user"
+          aria-hidden="true"
+          style={{ fontSize: "25px" }}
+        ></i>
       </Navbar.Collapse>
     </Navbar>
   );

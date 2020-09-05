@@ -90,9 +90,9 @@ const assignInventory = [
   {
     userId: "dUze7lyo9s347kioAZ3FHt",
     inventoryId: "dUze4lyo9s397kidAZ3SHu",
-    status: "recieved",
+    status: "pending",
     from_user: "",
-    new_user: "",
+    new_user: "dUze4lyo9s347kioAZ3FHt",
     dateAssigned: "2019-08-21",
     id: "dUze4g3o4s397",
   },
