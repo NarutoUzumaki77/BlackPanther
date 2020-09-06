@@ -79,12 +79,12 @@ const assignInventory = [
     id: "dUze4lyo9s397",
   },
   {
-    userId: "dUze4lyo9s347kioAZ3FHt",
+    userId: "dUze4lyo9s347kioAZ3SHt",
     inventoryId: "dUze4lyo9s397kudAZ3SHu",
-    status: "recieved",
-    from_user: "",
-    new_user: "",
-    dateAssigned: "2020-08-21",
+    status: "pending",
+    from_user: "dUze4lyo9s347kioAZ3FHt",
+    new_user: "dUze7lyo9s347kioAZ3FHt",
+    dateAssigned: "2020-09-3",
     id: "dUze4lyo4s397",
   },
   {
@@ -124,11 +124,26 @@ export function getAssignInventoryByUserId(user_id) {
   return assignInventory.filter((a) => a.userId === user_id);
 }
 
+export function getAssignInventoryByNewUserId(user_id) {
+  return assignInventory.filter((a) => a.new_user === user_id);
+}
+
 export function getReAssignedDevices(assignedDevices) {
   return assignedDevices.map((d) => {
     let m = {};
     m.device = getItem(d.inventoryId);
     m.to = getUserProfileById(d.new_user);
+    m.date_assigned = d.dateAssigned;
+    m.id = d.id;
+    return m;
+  });
+}
+
+export function getAssignedDevices(assignedDevices) {
+  return assignedDevices.map((d) => {
+    let m = {};
+    m.device = getItem(d.inventoryId);
+    m.from = getUserProfileById(d.userId);
     m.date_assigned = d.dateAssigned;
     m.id = d.id;
     return m;

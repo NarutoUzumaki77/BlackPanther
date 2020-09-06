@@ -3,39 +3,47 @@ import {
   getAssignInventoryByUserId,
   getReAssignedDevices,
   cancelReassignedDevice,
+  getAssignInventoryByNewUserId,
+  getAssignedDevices,
 } from "../../../services/fakeInventory";
 import DisplayReassignDevice from "./displayReassign";
+import DisplayAssignedDevices from "./displayAssigned";
 
 class PendingDeviceStatus extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pending: [],
+      reassigned: [],
+      assigned: [],
     };
   }
 
   componentDidMount() {
     const signInUser = this.props.user.profile;
-    const devicesAssigned = getAssignInventoryByUserId(signInUser.id);
-    let pending = devicesAssigned.filter((a) => a.status === "pending");
 
-    pending = getReAssignedDevices(pending);
+    const devicesReassigned = getAssignInventoryByUserId(signInUser.id);
+    let reassigned = devicesReassigned.filter((a) => a.status === "pending");
+    reassigned = getReAssignedDevices(reassigned);
 
-    this.setState({ pending });
+    const devicesAssigned = getAssignInventoryByNewUserId(signInUser.id);
+    let assigned = devicesAssigned.filter((a) => a.status === "pending");
+    assigned = getAssignedDevices(assigned);
+
+    this.setState({ reassigned, assigned });
   }
 
   handleCancelReassignedDevice = (device) => {
     cancelReassignedDevice(device);
-    
-    const pending = [...this.state.pending]
-    let ItemInDB = pending.find((i) => i.id === device.id);
-    pending.splice(pending.indexOf(ItemInDB), 1);
-    
-    this.setState({ pending })
+
+    const reassigned = [...this.state.pending];
+    let ItemInDB = reassigned.find((i) => i.id === device.id);
+    reassigned.splice(reassigned.indexOf(ItemInDB), 1);
+
+    this.setState({ reassigned });
   };
 
   render() {
-    const { pending } = this.state;
+    const { reassigned, assigned } = this.state;
     return (
       <div className="container">
         <div className="row">
@@ -48,39 +56,11 @@ class PendingDeviceStatus extends Component {
         </div>
         <div className="row">
           <div className="col-sm div-body" style={{ marginRight: "15px" }}>
-            <table className="table table-sm">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colSpan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
+            <DisplayAssignedDevices assigned={assigned} />
           </div>
           <div className="col-sm div-body" style={{ marginRight: "15px" }}>
             <DisplayReassignDevice
-              pending={pending}
+              reassigned={reassigned}
               handleCancel={this.handleCancelReassignedDevice}
             />
           </div>
