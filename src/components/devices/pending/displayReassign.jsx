@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const DisplayReassignDevice = ({ pending }) => {
+const DisplayReassignDevice = ({ pending, handleCancel }) => {
   return (
     <table className="table">
       <thead>
@@ -17,14 +17,16 @@ const DisplayReassignDevice = ({ pending }) => {
       <tbody>
         {pending.map((p) => (
           <tr key={p.device.id}>
-            <Link to={`/devices/${p.device.id}`}>
-              <td>{p.device.name}</td>
-            </Link>
+            <td>
+              <Link to={`/devices/${p.device.id}`}>{p.device.name}</Link>
+            </td>
             <td>{p.device.type}</td>
             <td>{p.to.firstName}</td>
             <td>{p.date_assigned}</td>
             <td>
-              <Button variant="danger">Cancel</Button>
+              <Button variant="danger" onClick={() => handleCancel(p)}>
+                <i className="fa fa-ban" aria-hidden="true"></i>
+              </Button>
             </td>
           </tr>
         ))}

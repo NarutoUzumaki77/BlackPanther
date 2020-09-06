@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   getAssignInventoryByUserId,
   getReAssignedDevices,
+  cancelReassignedDevice,
 } from "../../../services/fakeInventory";
 import DisplayReassignDevice from "./displayReassign";
 
@@ -23,9 +24,18 @@ class PendingDeviceStatus extends Component {
     this.setState({ pending });
   }
 
+  handleCancelReassignedDevice = (device) => {
+    cancelReassignedDevice(device);
+    
+    const pending = [...this.state.pending]
+    let ItemInDB = pending.find((i) => i.id === device.id);
+    pending.splice(pending.indexOf(ItemInDB), 1);
+    
+    this.setState({ pending })
+  };
+
   render() {
     const { pending } = this.state;
-    console.log(pending);
     return (
       <div className="container">
         <div className="row">
@@ -69,7 +79,10 @@ class PendingDeviceStatus extends Component {
             </table>
           </div>
           <div className="col-sm div-body" style={{ marginRight: "15px" }}>
-            <DisplayReassignDevice pending={pending} />
+            <DisplayReassignDevice
+              pending={pending}
+              handleCancel={this.handleCancelReassignedDevice}
+            />
           </div>
         </div>
       </div>

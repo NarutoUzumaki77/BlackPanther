@@ -129,9 +129,17 @@ export function getReAssignedDevices(assignedDevices) {
     let m = {};
     m.device = getItem(d.inventoryId);
     m.to = getUserProfileById(d.new_user);
-    m.date_assigned = d.dateAssigned
+    m.date_assigned = d.dateAssigned;
+    m.id = d.id;
     return m;
   });
+}
+
+export function cancelReassignedDevice(record) {
+  let reassigned = assignInventory.find((r) => r.id === record.id);
+  reassigned.new_user = "-"
+  reassigned.status = "recieved"
+  return reassigned;
 }
 
 export function getAllItems() {
