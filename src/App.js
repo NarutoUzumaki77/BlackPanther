@@ -5,7 +5,7 @@ import DeviceDetails from "./components/devices/deviceDetail";
 import LoginForm from "./components/login/loginForm";
 import DeviceForm from "./components/devices/deviceForm";
 import AssignedDevice from "./components/devices/assignedDevice";
-import PendingDeviceStatus from "./components/devices/pendingDevice";
+import PendingDeviceStatus from "./components/devices/pending/pendingDevice";
 import NotFound from "./components/notFound";
 import LougOut from "./components/login/logout";
 import { decode_token } from "./utils/authorization";
@@ -17,7 +17,6 @@ class App extends Component {
 
   componentDidMount() {
     const user = decode_token();
-    console.log(user);
     this.setState({ user });
   }
 

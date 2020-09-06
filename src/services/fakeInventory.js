@@ -91,7 +91,7 @@ const assignInventory = [
     userId: "dUze7lyo9s347kioAZ3FHt",
     inventoryId: "dUze4lyo9s397kidAZ3SHu",
     status: "pending",
-    from_user: "",
+    from_user: "dUze4lyo9s347kioAZ3SHt",
     new_user: "dUze4lyo9s347kioAZ3FHt",
     dateAssigned: "2019-08-21",
     id: "dUze4g3o4s397",
@@ -118,6 +118,20 @@ export function isItemAssignedToUser(item_id, user_id) {
       item.status === "recieved"
   );
   return isAssigned ? true : false;
+}
+
+export function getAssignInventoryByUserId(user_id) {
+  return assignInventory.filter((a) => a.userId === user_id);
+}
+
+export function getReAssignedDevices(assignedDevices) {
+  return assignedDevices.map((d) => {
+    let m = {};
+    m.device = getItem(d.inventoryId);
+    m.to = getUserProfileById(d.new_user);
+    m.date_assigned = d.dateAssigned
+    return m;
+  });
 }
 
 export function getAllItems() {
