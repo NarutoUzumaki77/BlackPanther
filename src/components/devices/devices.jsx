@@ -15,6 +15,7 @@ class Devices extends Component {
       devices: [],
       pageSize: 5,
       currentPage: 1,
+      currentFilter: "",
       sortColumn: { path: "name", order: "asc" },
     };
   }
@@ -38,8 +39,21 @@ class Devices extends Component {
     this.setState({ devices });
   };
 
+  handleChange = ({ target }) => {
+    const value = target.value;
+    this.setState({ currentFilter: value });
+  };
+
+  filterDevice = (search) => {
+    if (search === "") return this.state.devices;
+
+    return this.state.devices.filter((i) =>
+      i.name.toLowerCase().includes(search.toLowerCase())
+    );
+  };
+
   render() {
-    const { devices, sortColumn } = this.state;
+    const { devices, sortColumn, currentFilter } = this.state;
     const columns = [
       { path: "name", label: "Name" },
       { path: "status", label: "Status" },
@@ -52,7 +66,9 @@ class Devices extends Component {
       { path: "h" },
     ];
 
-    const sorted = _.orderBy(devices, [sortColumn.path], [sortColumn.order]);
+    const filtered_device = this.filterDevice(currentFilter);
+
+    const sorted = _.orderBy(filtered_device, [sortColumn.path], [sortColumn.order]);
 
     const sorted_devices = paginate(
       sorted,
@@ -66,15 +82,26 @@ class Devices extends Component {
           <div className="col-md-auto">
             <h2>Devices</h2>
           </div>
-          {isAuthorized("post:device") && (
-            <div className="col">
-              <h2 style={{ textAlign: "right" }}>
+          <div className="col">
+            <h2 style={{ textAlign: "right" }}>
+              {isAuthorized("post:device") && (
                 <Link to="/devices/new">
                   <Button variant="primary">Add Device</Button>
                 </Link>
-              </h2>
-            </div>
-          )}
+              )}
+            </h2>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search device by Name"
+              onChange={this.handleChange}
+              style={{ borderRadius: "10px", marginBottom: "5px" }}
+            ></input>
+          </div>
         </div>
         <DeviceTable
           columns={columns}
@@ -84,7 +111,7 @@ class Devices extends Component {
           devices={sorted_devices}
         />
         <Pagination
-          itemsCount={devices.length}
+          itemsCount={filtered_device.length}
           pageSize={this.state.pageSize}
           onPageChange={this.handlePageChange}
           currentPage={this.state.currentPage}

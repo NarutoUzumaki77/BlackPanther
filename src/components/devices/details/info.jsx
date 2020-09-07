@@ -8,7 +8,7 @@ const DeviceInfo = ({ details, location }) => {
   } catch (ex) {}
 
   return (
-    <div className="container">
+    <div>
       <div className="div-heading">Details</div>
       <div className="device-body">
         <div

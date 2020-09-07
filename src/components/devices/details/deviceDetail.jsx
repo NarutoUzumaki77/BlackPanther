@@ -32,8 +32,8 @@ class DeviceDetail extends Component {
 
     return (
       <div className="container">
-        <div style={{ paddingLeft: "20px" }}>
-          <h2>{detail.name}</h2>
+        <div style={{ paddingLeft: "10px" }}>
+          <h4>{detail.name}</h4>
           Purchased: {detail.purchase_date}
         </div>
         <div className="row">
@@ -42,6 +42,23 @@ class DeviceDetail extends Component {
           </div>
           <div className="col-4">
             <Reassign detail_id={this.props.match.params.id} />
+            <div className="div-heading">History of Repairs</div>
+            <div className="device-body">
+              <ol>
+                <li>shdhsd sdsd</li>
+                <li>sddssd ddd</li>
+                <li>sqee vddd</li>
+                <li>idido dood</li>
+                <li>idido dood</li>
+                <li>idido dood</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <div className="div-heading">Related Devices</div>
+            <div className="device-body"></div>
           </div>
         </div>
       </div>
