@@ -22,6 +22,8 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   background-color: #999e99;
+  padding-left: 10px;
+  padding-top: 5px;
 }
 
 .div-body {
@@ -29,6 +31,7 @@
   border-right: 1px solid #808580;
   border-bottom: 1px solid #808580;
   height: 200px;
+  margin-bottom: 20px;
 }
 
 .label-left {

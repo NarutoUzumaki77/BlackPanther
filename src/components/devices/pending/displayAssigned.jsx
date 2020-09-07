@@ -24,16 +24,19 @@ const DisplayAssignedDevices = ({ assigned, handleAccept, handleCancel }) => {
             <td>{p.from.firstName}</td>
             <td>{p.date_assigned}</td>
             <td style={{ textAlign: "right" }}>
-              <Button
-                variant="success"
-                style={{ marginRight: "5px" }}
-                onClick={() => handleAccept(p)}
-              >
-                <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
-              </Button>
-              <Button variant="danger" onClick={() => handleCancel(p)}>
-                <i className="fa fa-ban" aria-hidden="true"></i>
-              </Button>
+              <div>
+                {" "}
+                <Button
+                  variant="success"
+                  style={{ marginRight: "5px" }}
+                  onClick={() => handleAccept(p)}
+                >
+                  <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                </Button>
+                <Button variant="danger" onClick={() => handleCancel(p)}>
+                  <i className="fa fa-ban" aria-hidden="true"></i>
+                </Button>
+              </div>
             </td>
           </tr>
         ))}

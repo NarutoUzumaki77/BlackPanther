@@ -70,26 +70,25 @@ class PendingDeviceStatus extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-sm div-heading" style={{ marginRight: "15px" }}>
-            Pending Assigned Device
+          <div className="col-sm">
+            <div className="div-heading">Pending Assigned Device</div>
+            <div className="div-body">
+              {" "}
+              <DisplayAssignedDevices
+                assigned={assigned}
+                handleAccept={this.handleAcceptDevice}
+                handleCancel={this.handleCancelassignedDevice}
+              />
+            </div>
           </div>
-          <div className="col-sm div-heading" style={{ marginRight: "15px" }}>
-            Reassigned Device
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm div-body" style={{ marginRight: "15px" }}>
-            <DisplayAssignedDevices
-              assigned={assigned}
-              handleAccept={this.handleAcceptDevice}
-              handleCancel={this.handleCancelassignedDevice}
-            />
-          </div>
-          <div className="col-sm div-body" style={{ marginRight: "15px" }}>
-            <DisplayReassignDevice
-              reassigned={reassigned}
-              handleCancel={this.handleCancelReassignedDevice}
-            />
+          <div className="col-sm">
+            <div className="div-heading">Reassigned Device</div>
+            <div className="div-body">
+              <DisplayReassignDevice
+                reassigned={reassigned}
+                handleCancel={this.handleCancelReassignedDevice}
+              />
+            </div>
           </div>
         </div>
       </div>

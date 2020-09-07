@@ -1,5 +1,4 @@
 import { getUserProfileById } from "./fakeUserProfile";
-import { assign } from "lodash";
 
 const inventory = [
   {
