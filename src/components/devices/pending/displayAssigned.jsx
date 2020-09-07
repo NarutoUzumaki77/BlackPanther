@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const DisplayAssignedDevices = ({ assigned }) => {
+const DisplayAssignedDevices = ({ assigned, handleAccept, handleCancel }) => {
   return (
     <table className="table">
       <thead>
@@ -24,10 +24,14 @@ const DisplayAssignedDevices = ({ assigned }) => {
             <td>{p.from.firstName}</td>
             <td>{p.date_assigned}</td>
             <td style={{ textAlign: "right" }}>
-              <Button variant="success" style={{ marginRight: "5px" }}>
+              <Button
+                variant="success"
+                style={{ marginRight: "5px" }}
+                onClick={() => handleAccept(p)}
+              >
                 <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
               </Button>
-              <Button variant="danger">
+              <Button variant="danger" onClick={() => handleCancel(p)}>
                 <i className="fa fa-ban" aria-hidden="true"></i>
               </Button>
             </td>

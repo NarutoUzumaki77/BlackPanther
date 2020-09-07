@@ -5,6 +5,8 @@ import {
   cancelReassignedDevice,
   getAssignInventoryByNewUserId,
   getAssignedDevices,
+  acceptAssignedDevice,
+  cancelAssignedDevice,
 } from "../../../services/fakeInventory";
 import DisplayReassignDevice from "./displayReassign";
 import DisplayAssignedDevices from "./displayAssigned";
@@ -35,11 +37,32 @@ class PendingDeviceStatus extends Component {
   handleCancelReassignedDevice = (device) => {
     cancelReassignedDevice(device);
 
-    const reassigned = [...this.state.pending];
+    const reassigned = [...this.state.reassigned];
     let ItemInDB = reassigned.find((i) => i.id === device.id);
     reassigned.splice(reassigned.indexOf(ItemInDB), 1);
 
     this.setState({ reassigned });
+  };
+
+  handleCancelassignedDevice = (device) => {
+    cancelAssignedDevice(device);
+
+    const assigned = [...this.state.assigned];
+    let ItemInDB = assigned.find((i) => i.id === device.id);
+    assigned.splice(assigned.indexOf(ItemInDB), 1);
+
+    this.setState({ assigned });
+  };
+
+  handleAcceptDevice = (device) => {
+    acceptAssignedDevice(device);
+
+    const signInUser = this.props.user.profile;
+    const devicesAssigned = getAssignInventoryByNewUserId(signInUser.id);
+    let assigned = devicesAssigned.filter((a) => a.status === "pending");
+    assigned = getAssignedDevices(assigned);
+
+    this.setState({ assigned });
   };
 
   render() {
@@ -56,7 +79,11 @@ class PendingDeviceStatus extends Component {
         </div>
         <div className="row">
           <div className="col-sm div-body" style={{ marginRight: "15px" }}>
-            <DisplayAssignedDevices assigned={assigned} />
+            <DisplayAssignedDevices
+              assigned={assigned}
+              handleAccept={this.handleAcceptDevice}
+              handleCancel={this.handleCancelassignedDevice}
+            />
           </div>
           <div className="col-sm div-body" style={{ marginRight: "15px" }}>
             <DisplayReassignDevice

@@ -1,4 +1,5 @@
 import { getUserProfileById } from "./fakeUserProfile";
+import { assign } from "lodash";
 
 const inventory = [
   {
@@ -152,9 +153,30 @@ export function getAssignedDevices(assignedDevices) {
 
 export function cancelReassignedDevice(record) {
   let reassigned = assignInventory.find((r) => r.id === record.id);
-  reassigned.new_user = "-"
-  reassigned.status = "recieved"
+  reassigned.new_user = "-";
+  reassigned.status = "recieved";
   return reassigned;
+}
+
+export function acceptAssignedDevice(record) {
+  let assigned = assignInventory.find((r) => r.id === record.id);
+  assigned.status = "recieved";
+  assigned.from_user = assigned.userId;
+  assigned.userId = assigned.new_user;
+
+  const d = new Date();
+  const dateAssigned = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate();
+  assigned.dateAssigned = dateAssigned;
+
+  return assigned;
+}
+
+export function cancelAssignedDevice(record) {
+  let assigned = assignInventory.find((r) => r.id === record.id);
+  assigned.status = "recieved";
+  assigned.new_user = "-";
+
+  return assigned;
 }
 
 export function getAllItems() {
