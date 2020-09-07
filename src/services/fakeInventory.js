@@ -114,8 +114,7 @@ export function isItemAssignedToUser(item_id, user_id) {
   const isAssigned = assignInventory.find(
     (item) =>
       item.inventoryId === item_id &&
-      item.userId === user_id &&
-      item.status === "recieved"
+      item.userId === user_id
   );
   return isAssigned ? true : false;
 }

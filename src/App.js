@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NavBar from "./components/common/navbar";
 import Devices from "./components/devices/devices";
-import DeviceDetails from "./components/devices/deviceDetail";
+import DeviceDetails from "./components/devices/details/deviceDetail";
 import LoginForm from "./components/login/loginForm";
 import DeviceForm from "./components/devices/deviceForm";
 import AssignedDevice from "./components/devices/assignedDevice";

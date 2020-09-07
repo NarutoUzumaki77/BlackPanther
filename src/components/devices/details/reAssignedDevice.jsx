@@ -1,9 +1,9 @@
 import React from "react";
-import Form from "../common/form";
+import Form from "../../common/form";
 import Joi from "joi-browser";
-import { decode_token } from "../../utils/authorization";
-import { getAllUser } from "../../services/fakeUserProfile";
-import { isItemAssignedToUser } from "../../services/fakeInventory";
+import { decode_token } from "../../../utils/authorization";
+import { getAllUser } from "../../../services/fakeUserProfile";
+import { isItemAssignedToUser } from "../../../services/fakeInventory";
 
 class Reassign extends Form {
   constructor(props) {
@@ -60,17 +60,19 @@ class Reassign extends Form {
 
     return (
       <div>
-        <h4>Reassign Device</h4>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderSelect("users", "Users")}
-          <button
-            disabled={!canReassignUser}
-            type="Save"
-            className="btn btn-primary"
-          >
-            Submit
-          </button>
-        </form>
+        <div className="div-heading">Reassign Device</div>
+        <div className="device-body">
+          <form onSubmit={this.handleSubmit}>
+            {this.renderSelect("users", "")}
+            <button
+              disabled={!canReassignUser}
+              type="Save"
+              className="btn btn-primary"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

@@ -72,8 +72,7 @@ class PendingDeviceStatus extends Component {
         <div className="row">
           <div className="col-sm">
             <div className="div-heading">Pending Assigned Device</div>
-            <div className="div-body">
-              {" "}
+            <div className="device-body">
               <DisplayAssignedDevices
                 assigned={assigned}
                 handleAccept={this.handleAcceptDevice}
@@ -83,7 +82,7 @@ class PendingDeviceStatus extends Component {
           </div>
           <div className="col-sm">
             <div className="div-heading">Reassigned Device</div>
-            <div className="div-body">
+            <div className="device-body">
               <DisplayReassignDevice
                 reassigned={reassigned}
                 handleCancel={this.handleCancelReassignedDevice}

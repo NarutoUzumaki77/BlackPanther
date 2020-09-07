@@ -30,8 +30,19 @@
   border-left: 1px solid #808580;
   border-right: 1px solid #808580;
   border-bottom: 1px solid #808580;
-  height: 200px;
+  height: auto;
   margin-bottom: 20px;
+}
+
+.device-body {
+  border-left: 1px solid #aeb1ae;
+  border-right: 1px solid #aeb1ae;
+  border-bottom: 1px solid #aeb1ae;
+  height: auto;
+  margin-bottom: 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 10px;
 }
 
 .label-left {
