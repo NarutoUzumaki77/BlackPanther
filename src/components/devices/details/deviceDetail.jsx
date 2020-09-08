@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { getItem } from "../../../services/fakeInventory";
 import Reassign from "./reAssignedDevice";
 import DeviceInfo from "./info";
+import RepairHistory from "./deviceRepairHistory";
+import RelatedDevices from "./relatedDevices";
 
 class DeviceDetail extends Component {
   constructor(props) {
@@ -33,8 +35,10 @@ class DeviceDetail extends Component {
     return (
       <div className="container">
         <div style={{ paddingLeft: "10px" }}>
-          <h4>{detail.name}</h4>
-          Purchased: {detail.purchase_date}
+          <h3>{detail.name}</h3>
+          <span style={{ color: "grey", fontSize: "13px" }}>
+            Purchased: {detail.purchase_date}
+          </span>
         </div>
         <div className="row">
           <div className="col-8">
@@ -42,23 +46,12 @@ class DeviceDetail extends Component {
           </div>
           <div className="col-4">
             <Reassign detail_id={this.props.match.params.id} />
-            <div className="div-heading">History of Repairs</div>
-            <div className="device-body">
-              <ol>
-                <li>shdhsd sdsd</li>
-                <li>sddssd ddd</li>
-                <li>sqee vddd</li>
-                <li>idido dood</li>
-                <li>idido dood</li>
-                <li>idido dood</li>
-              </ol>
-            </div>
+            <RepairHistory />
           </div>
         </div>
         <div className="row">
           <div className="col-12">
-            <div className="div-heading">Related Devices</div>
-            <div className="device-body"></div>
+            <RelatedDevices detail_id={this.props.match.params.id}/>
           </div>
         </div>
       </div>

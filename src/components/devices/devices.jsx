@@ -53,7 +53,7 @@ class Devices extends Component {
   };
 
   render() {
-    const { devices, sortColumn, currentFilter } = this.state;
+    const { sortColumn, currentFilter } = this.state;
     const columns = [
       { path: "name", label: "Name" },
       { path: "status", label: "Status" },
