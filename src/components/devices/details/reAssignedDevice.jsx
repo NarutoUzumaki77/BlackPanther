@@ -2,8 +2,11 @@ import React from "react";
 import Form from "../../common/form";
 import Joi from "joi-browser";
 import { decode_token } from "../../../utils/authorization";
-import { getAllUser } from "../../../services/fakeUserProfile";
-import { isItemAssignedToUser } from "../../../services/fakeInventory";
+import { getAllUser, getUserProfile } from "../../../services/fakeUserProfile";
+import {
+  isItemAssignedToUser,
+  assignItemToUser,
+} from "../../../services/fakeInventory";
 
 class Reassign extends Form {
   constructor(props) {
@@ -52,7 +55,14 @@ class Reassign extends Form {
   };
 
   doSubmit = () => {
-    console.log(this.state.selectedOption);
+    const inventoryId = this.props.detail_id;
+    let email = this.state.selectedOption;
+    email = email.split("-");
+    email = email[1].trim();
+
+    const new_user = getUserProfile(email);
+
+    assignItemToUser(inventoryId, new_user.id);
   };
 
   render() {

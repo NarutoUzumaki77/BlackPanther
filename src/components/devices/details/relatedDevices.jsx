@@ -20,7 +20,6 @@ class RelatedDevices extends Component {
     if (related_devices.length > 2) {
       related_devices = related_devices.splice(0, 2);
     }
-    console.log(related_devices);
     this.setState({ related_devices });
   }
 
